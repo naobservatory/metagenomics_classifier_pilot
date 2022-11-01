@@ -8,6 +8,9 @@
 # User-specific files
 .Ruserdata
 
+# Genomic Sequences
+*.fastq.gz
+
 # Example code in package build process
 *-Ex.R
 
@@ -37,3 +40,15 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+# Slurm output folders
+slurm/czid/*
+slurm/nf-core-mag/*
+
+
+## Keeping the Slurm output folder
+!slurm/czid/.gitkeep
+!slurm/nf-core-mag/.gitkeep
+
+# nf-core results
+nf-core-mag/results

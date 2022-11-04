@@ -1,0 +1,313 @@
+---
+title: "CZID R analysis demo"
+description: |
+author:
+  - name: Michael R. McLaren
+    url: {}
+categories:
+date: 2022-10-31
+draft: false
+output:
+  distill::distill_article:
+    self_contained: false
+    dev: svg
+    toc: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  cache = TRUE,
+  autodep = TRUE,
+  cache.comments = FALSE,
+  dpi = 300
+)
+```
+
+# Background
+
+possible outline
+
+- study intro
+  - rna viromics study - https://journals.asm.org/doi/full/10.1128/AEM.01448-21
+  - hjelmso et al?
+- sequencing analysis
+  - czid
+- data input for R
+  - download output from czid
+    - two formats
+  - Load csv into R
+  - Load biom into R
+  - cleaning
+    - tax
+    - sample data
+- basic data checks and stats
+  - follow stressed bird microbiomes project
+- analysis
+  - taxonomic composition
+    - domains
+      - domain level barplot
+      - ratios -> log scale
+    - most abundant viruses, viral prevalence vs abundance -> table
+    - ratio of viruses / bacteria
+    - effect of enrichment on viral ratio
+  - reproduce rothman figure 4
+    - bray curtis NMDS
+    - shannon index (viruses only?)
+    - relative abundance (prop) for 18 viruses
+      - these viruses were choen based on ANCOM; could use that or a different method e.g. corncob; or just look at the most abundant viruses
+  - look at effect of enrichment
+    - aldex? corncob?
+
+# R setup
+
+```{r}
+
+# set of data analysis and viz tools
+library(tidyverse)
+
+# file system helpers
+library(fs)
+
+# specifying locations within a project
+library(here)
+
+# microbiome analysis helpers
+library(biomformat)
+library(speedyseq)
+
+# plotting helpers
+library(cowplot)
+library(patchwork)
+
+theme_set(theme_cowplot())
+```
+
+# Data import
+
+```{r}
+biom <- here("data/rothman2021rnav/czid/Combined Microbiome File.biom") %>%
+  read_biom()
+
+biom  <- "/home/michael/research/nao/hjelmso2019meta/output/czid/Combined Microbiome File.biom" %>% read_biom()
+```
+
+```{r}
+biom %>% biom_data() %>% glimpse
+biom %>% sample_metadata()
+biom %>% observation_metadata()
+```
+
+We can pull out the various files
+
+```{r}
+abun <- biom %>% biom_data() %>% as.matrix
+sam <- biom %>% sample_metadata() %>% as_tibble(rownames = '.sample')
+
+# what i want to run
+tax <- biom %>% observation_metadata() %>% as_tibble(rownames = '.otu')
+```
+
+Note, I think that sometimes a data.frame will be returned, and sometimes a list.
+We want a nice tibble. But how we get there depends on what we get.
+
+If we get a data frame, we can just do
+
+```{r}
+tax_tmp <- biom %>% observation_metadata()
+if (is.data.frame(tax_tmp)) {
+  tax <- tax_tmp %>% as_tibble(rownames = '.otu')
+} else {
+  tax <- tax_tmp %>%
+    enframe(name = 'feature_id') %>%
+    unnest_wider(value)
+}
+rm(tax_tmp)
+
+rnks <- c('superkingdom', 'kingdom', 'phylum', 'class', 'order', 'family',
+  'genus', 'species')
+colnames(tax)[2:9] <- rnks
+tax %>% glimpse
+# use NA for missing ranks
+tax <- tax %>%
+  mutate(
+    across(everything(), ~ifelse(. == "", NA_character_, .))
+  )
+tax %>% glimpse
+```
+
+Let's set the rank names and replace empty string with NA
+
+Aside: How do I know what the rank names are?
+Simple if crude way to check is to look at a species page on NBCI Taxonomy website, e.g. https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=9606
+
+
+Inspect a bacterial taxon to see if using the new NCBI taxonomy
+
+```{r}
+tax %>%
+  filter(genus == 'Bacteroides') %>%
+  slice(1)%>%
+  glimpse
+```
+
+example record: https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=1263047
+
+If go to this taxon in NCBI, can see that NCBI has adopted the new phylum name Bacteroidota; however, here we have the old phylum name Bacteroidetes.
+This suggests that CZID is currently using an older version of NCBI prior to the name change
+
+see
+- https://ncbiinsights.ncbi.nlm.nih.gov/2021/12/10/ncbi-taxonomy-prokaryote-phyla-added/
+- https://www.the-scientist.com/news-opinion/newly-renamed-prokaryote-phyla-cause-uproar-69578
+<!--  -->
+
+
+import to phyloseq:
+
+```{r}
+ps <- phyloseq(
+  otu_table(abun, taxa_are_rows = TRUE),
+  sample_data(sam),
+  tax_table(tax)
+)
+```
+
+# Basic data checks and stats
+
+```{r}
+ps <- ps %>%
+  mutate_sample_data(.,
+    sample_sum = sample_sums(.)
+  )
+sam <- ps %>% sample_data %>% as_tibble
+tax <- ps %>% tax_table %>% as_tibble
+```
+
+```{r}
+ps %>% t
+```
+
+```{r}
+ps %>% sample_names
+ps %>% sample_data %>% glimpse
+```
+
+```{r}
+sam %>%
+  ggplot(aes(sample_sum, fill = collection_location)) +
+  scale_x_log10() +
+  geom_histogram()
+```
+
+check classification percentages
+
+```{r}
+tax %>%
+  pivot_longer(-.otu, names_to = 'rank') %>%
+  with_groups(rank, summarize,
+    features_classified = sum(!is.na(value)),
+    features_total = n()
+  ) %>%
+  mutate(
+    frac_classified = features_classified / features_total,
+    rank = factor(rank, rank_names(ps))
+  ) %>%
+  arrange(rank)
+```
+
+TODO: inspect what is doing on - why not everything has a kingdom? etc
+
+```{r}
+tax %>%
+  filter(is.na(superkingdom)) %>%
+  glimpse
+tax %>%
+  filter(is.na(family)) %>%
+  glimpse
+```
+
+This is worth discussing with the team
+
+
+
+Check taxa sums
+
+```{r}
+ps %>% taxa_sums %>% qplot +
+  scale_x_log10() +
+  geom_histogram()
+```
+
+# Analysis
+
+
+## Taxonomic composition
+
+
+## Rothman et al 2021 Figure 4
+
+
+https://journals.asm.org/doi/full/10.1128/AEM.01448-21
+
+```{r}
+library(vegan)
+div <- diversity(otu_table(ps) %>% t)
+```
+
+```{r}
+sam1 <- sam %>%
+  add_column(diversity = div)
+```
+
+
+```{r}
+p_div <- sam1 %>%
+  ggplot(aes(y = diversity, x = SampleType, fill = SampleType)) +
+  geom_boxplot() +
+  scale_fill_brewer(type = 'qual')
+p_div
+```
+
+NMDS plot
+```{r}
+nmds <- ps %>%
+  transform_sample_counts(~ . / sum(.)) %>%
+  ordinate(method = "NMDS", distance = "bray", trymax = 50)
+```
+
+```{r}
+p_ord <- plot_ordination(ps, nmds, color = "SampleType", type="samples")
+```
+
+
+```{r}
+x  <- ps %>%
+  transform_sample_counts(~ . / sum(.)) %>%
+  filter_taxa2(~mean(.) > 0.01) %>%
+  as_tibble
+```
+
+```{r}
+p_prop <- x %>%
+  ggplot(aes(x = SampleType, y = .abundance, color = SampleType)) +
+  facet_wrap(~.otu) +
+  scale_y_log10() +
+  geom_boxplot() +
+  geom_jitter() +
+  labs(y = 'Proportion') +
+  theme(
+    axis.text.x = element_text(angle = 90)
+  )
+p_prop
+```
+
+```{r}
+(p_ord + p_div) / p_prop
+
+```
+
+
+
+
+## Effect of enrichment

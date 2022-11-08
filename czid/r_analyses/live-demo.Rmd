@@ -98,7 +98,7 @@ biom %>% biom_data() %>% glimpse
 biom %>% sample_metadata()
 biom %>% observation_metadata()
 ```
-
+ 
 We can pull out the various files
 
 ```{r}

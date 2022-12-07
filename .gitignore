@@ -41,14 +41,16 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-# Slurm output folders
+# Content of Slurm output folder
 slurm/czid/*
 slurm/nf-core-mag/*
 
-
-## Keeping the Slurm output folder
+# Including the Slurm output folder
 !slurm/czid/.gitkeep
 !slurm/nf-core-mag/.gitkeep
+
+#MacOS files
+.DS_Store
 
 # nf-core results
 nf-core-mag/results

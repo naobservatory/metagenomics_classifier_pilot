@@ -1,0 +1,98 @@
+sample_name,sample_type,nucleotide_type,collection_date,water_control,collection_location,Metadata Name,Rothman Location,is_enriched
+SRR14530745,Environmental,RNA,2020-08,No,"California, USA",Metadata Value,NC,0
+SRR14530771,Environmental,RNA,2020-10,No,"California, USA",Metadata Value,HTP,0
+SRR14530743,Environmental,RNA,2020-10,No,"California, USA",Metadata Value,OC,0
+SRR14530855,Environmental,RNA,2020-11,No,"California, USA",Metadata Value,SB,0
+SRR14530730,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,PL,0
+SRR14530889,Environmental,RNA,2020-11,No,"California, USA",Metadata Value,HTP,0
+SRR14530755,Environmental,RNA,2020-08,No,"California, USA",Metadata Value,JWPC,0
+SRR14530884,Environmental,RNA,2020-12,No,"California, USA",Metadata Value,HTP,0
+SRR14530748,Environmental,RNA,2020-10,No,"California, USA",Metadata Value,NC,0
+SRR14530770,Environmental,RNA,2020-10,No,"California, USA",Metadata Value,HTP,0
+SRR14530766,Environmental,RNA,2020-08,No,"California, USA",Metadata Value,HTP,0
+SRR14530891,Environmental,RNA,2021-01,No,"California, USA",Metadata Value,HTP,0
+SRR14530724,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,SB,0
+SRR14530750,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,JWPC,0
+SRR14530866,Environmental,RNA,2020-12,No,"California, USA",Metadata Value,OC,0
+SRR14530875,Environmental,RNA,2020-11,No,"California, USA",Metadata Value,NC,0
+SRR14530739,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,OC,0
+SRR14530887,Environmental,RNA,2020-12,No,"California, USA",Metadata Value,HTP,0
+SRR14530759,Environmental,RNA,2020-10,No,"California, USA",Metadata Value,JWPC,0
+SRR14530732,Environmental,RNA,2020-08,No,"California, USA",Metadata Value,PL,0
+SRR14530853,Environmental,RNA,2020-11,No,"California, USA",Metadata Value,SJ,0
+SRR21452136,Environmental,RNA,2020-07,No,"California, USA",Metadata Value,ESC,0
+SRR14530754,Environmental,RNA,2020-08,No,"California, USA",Metadata Value,JWPC,0
+SRR14530860,Environmental,RNA,2020-11,No,"California, USA",Metadata Value,PL,0
+SRR14530756,Environmental,RNA,2020-08,No,"California, USA",Metadata Value,JWPC,0
+SRR14530858,Environmental,RNA,2020-12,No,"California, USA",Metadata Value,PL,0
+SRR14530898,Environmental,RNA,2020-08,No,"California, USA",Metadata Value,SJ,0
+SRR14530890,Environmental,RNA,2020-11,No,"California, USA",Metadata Value,HTP,0
+SRR14530886,Environmental,RNA,2020-12,No,"California, USA",Metadata Value,HTP,0
+SRR14530734,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,OC,0
+SRR14530882,Environmental,RNA,2020-12,No,"California, USA",Metadata Value,HTP,0
+SRR14530753,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,JWPC,0
+SRR14530877,Environmental,RNA,2020-11,No,"California, USA",Metadata Value,JWPC,0
+SRR14530772,Environmental,RNA,2020-10,No,"California, USA",Metadata Value,HTP,0
+SRR14530769,Environmental,RNA,2020-10,No,"California, USA",Metadata Value,HTP,0
+SRR14530863,Environmental,RNA,2020-11,No,"California, USA",Metadata Value,PL,0
+SRR14530763,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,HTP,0
+SRR14530857,Environmental,RNA,2020-12,No,"California, USA",Metadata Value,PL,0
+SRR14530738,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,OC,0
+SRR14530729,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,PL,0
+SRR14530742,Environmental,RNA,2020-08,No,"California, USA",Metadata Value,OC,0
+SRR14530871,Environmental,RNA,2020-11,No,"California, USA",Metadata Value,OC,0
+SRR14530749,Environmental,RNA,2020-10,No,"California, USA",Metadata Value,NC,0
+SRR14530864,Environmental,RNA,2021-01,No,"California, USA",Metadata Value,PL,0
+SRR14530895,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,SJ,0
+SRR14530888,Environmental,RNA,2020-11,No,"California, USA",Metadata Value,HTP,0
+SRR14530740,Environmental,RNA,2020-08,No,"California, USA",Metadata Value,OC,0
+SRR14530762,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,HTP,0
+SRR14530879,Environmental,RNA,2020-11,No,"California, USA",Metadata Value,JWPC,0
+SRR14530870,Environmental,RNA,2020-11,No,"California, USA",Metadata Value,OC,0
+SRR14530744,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,NC,0
+SRR14530758,Environmental,RNA,2020-10,No,"California, USA",Metadata Value,JWPC,0
+SRR14530902,Environmental,RNA,2020-10,No,"California, USA",Metadata Value,SJ,0
+SRR14530854,Environmental,RNA,2020-11,No,"California, USA",Metadata Value,SJ,0
+SRR14530751,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,JWPC,0
+SRR14530873,Environmental,RNA,2020-11,No,"California, USA",Metadata Value,OC,0
+SRR14530893,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,SJ,0
+SRR14530892,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,SJ,0
+SRR14530752,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,JWPC,0
+SRR14530741,Environmental,RNA,2020-08,No,"California, USA",Metadata Value,OC,0
+SRR14530865,Environmental,RNA,2021-01,No,"California, USA",Metadata Value,PL,0
+SRR21452137,Environmental,RNA,2020-07,No,"California, USA",Metadata Value,ESC,0
+SRR14530874,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,NC,0
+SRR21452135,Environmental,RNA,2020-10,No,"California, USA",Metadata Value,OC,0
+SRR14530725,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,SB,0
+SRR14530868,Environmental,RNA,2020-11,No,"California, USA",Metadata Value,OC,0
+SRR14530856,Environmental,RNA,2020-10,No,"California, USA",Metadata Value,SB,0
+SRR14530851,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,SJ,0
+SRR14530727,Environmental,RNA,2020-08,No,"California, USA",Metadata Value,SB,0
+SRR14530764,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,HTP,0
+SRR14530760,Environmental,RNA,2020-10,No,"California, USA",Metadata Value,JW,0
+SRR14530859,Environmental,RNA,2020-12,No,"California, USA",Metadata Value,PL,0
+SRR14530901,Environmental,RNA,2020-10,No,"California, USA",Metadata Value,SJ,0
+SRR14530885,Environmental,RNA,2020-12,No,"California, USA",Metadata Value,HTP,0
+SRR14530736,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,OC,0
+SRR14530869,Environmental,RNA,2020-11,No,"California, USA",Metadata Value,OC,0
+SRR14530880,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,HTP,0
+SRR14530747,Environmental,RNA,2020-08,No,"California, USA",Metadata Value,NC,0
+SRR14530897,Environmental,RNA,2020-08,No,"California, USA",Metadata Value,SJ,0
+SRR14530881,Environmental,RNA,2020-09,No,"California, USA",Metadata Value,HTP,0
+SRR14530862,Environmental,RNA,2020-11,No,"California, USA",Metadata Value,PL,0
+SRR14530852,Environmental,RNA,2020-11,No,"California, USA",,SJ,0
+SRR14530737,Environmental,RNA,2020-09,No,"California, USA",,OC,0
+SRR14530726,Environmental,RNA,2020-08,No,"California, USA",,SB,0
+SRR14530728,Environmental,RNA,2020-10,No,"California, USA",,SB,0
+SRR14530765,Environmental,RNA,2020-08,No,"California, USA",,HTP,0
+SRR14530903,Environmental,RNA,2020-10,No,"California, USA",,SJ,0
+SRR14530900,Environmental,RNA,2020-10,No,"California, USA",,SJ,0
+SRR14530878,Environmental,RNA,2020-11,No,"California, USA",,JWPC,0
+SRR14530867,Environmental,RNA,2020-12,No,"California, USA",,OC,0
+SRR14530733,Environmental,RNA,2020-10,No,"California, USA",,PL,0
+SRR14530767,Environmental,RNA,2020-08,No,"California, USA",,HTP,0
+SRR14530899,Environmental,RNA,2020-08,No,"California, USA",,SJ,0
+SRR14530896,Environmental,RNA,2020-09,No,"California, USA",,SJ,0
+SRR14530761,Environmental,RNA,2020-10,No,"California, USA",,JW,0
+SRR14530731,Environmental,RNA,2020-08,No,"California, USA",,PL,0
+SRR14530876,Environmental,RNA,2020-09,No,"California, USA",,JWPC,0

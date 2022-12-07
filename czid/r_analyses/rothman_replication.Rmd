@@ -1,0 +1,87 @@
+---
+title: "rothman_replication"
+author: 
+  - name: Simon Grimm
+    url: {}
+date: 2022-11-08
+description: |
+categories:
+draft: false
+output:
+  distill::distill_article:
+    self_contained: false
+    dev: svg
+    toc: true
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  cache = TRUE,
+  autodep = TRUE,
+  cache.comments = FALSE,
+  dpi = 300
+)
+```
+
+# Background
+
+possible outline
+
+- study intro
+  - rna viromics study - https://journals.asm.org/doi/full/10.1128/AEM.01448-21
+  - hjelmso et al?
+- sequencing analysis
+  - czid
+- data input for R
+  - download output from czid
+    - two formats
+  - Load csv into R
+  - Load biom into R
+  - cleaning
+    - tax
+    - sample data
+- basic data checks and stats
+  - follow stressed bird microbiomes project
+- analysis
+  - taxonomic composition
+    - domains
+      - domain level barplot
+      - ratios -> log scale
+    - most abundant viruses, viral prevalence vs abundance -> table
+    - ratio of viruses / bacteria
+    - effect of enrichment on viral ratio
+  - reproduce rothman figure 4
+    - bray curtis NMDS
+    - shannon index (viruses only?)
+    - relative abundance (prop) for 18 viruses
+      - these viruses were choen based on ANCOM; could use that or a different method e.g. corncob; or just look at the most abundant viruses
+  - look at effect of enrichment
+    - aldex? corncob?
+
+# R setup
+
+```{r}
+
+# set of data analysis and viz tools
+library(tidyverse)
+
+# file system helpers
+library(fs)
+
+# specifying locations within a project
+library(here)
+
+# microbiome analysis helpers
+library(biomformat)
+library(speedyseq)
+
+# plotting helpers
+library(cowplot)
+library(patchwork)
+
+theme_set(theme_cowplot())
+```
